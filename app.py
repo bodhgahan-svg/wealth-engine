@@ -23,7 +23,7 @@ init_db()
 
 @app.post("/api/node/heartbeat")
 async def node_heartbeat(payload: dict):
-    """ यूजर का नोड हर 30 सेकंड में यहाँ सिग्नल भेजेगा और डेटाबेस में सेव होगा """
+    # यूजर का नोड हर 30 सेकंड में यहाँ सिग्नल भेजेगा और डेटाबेस में सेव होगा
     node_id = payload.get("node_id")
     ip_address = payload.get("ip_address", "unknown")
     bytes_count = payload.get("bytes", 0)
@@ -52,10 +52,7 @@ async def node_heartbeat(payload: dict):
 
 @app.post("/api/b2b/route-request")
 async def route_b2b_traffic(payload: dict):
-    """ 
-    बाहरी एआई कंपनी जब रिक्वेस्ट भेजेगी, 
-    यह डेटाबेस से लाइव एक्टिव नोड उठाकर ट्रैफिक रूट करेगा।
-    """
+    # बाहरी एआई कंपनी जब रिक्वेस्ट भेजेगी, यह डेटाबेस से लाइव एक्टिव नोड उठाकर ट्रैफिक रूट करेगा।
     target_url = payload.get("target_url")
     if not target_url:
         raise HTTPException(status_code=400, detail="Target URL missing")
