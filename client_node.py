@@ -1,7 +1,6 @@
 import time
 import requests
 
-# असली रेलवे यूआरएल के साथ सही फॉर्मेट
 GATEWAY_URL = "https://wealth-engine-production-852c.up.railway.app/api/node/heartbeat"
 NODE_ID = "node_alpha_01"
 
@@ -11,7 +10,7 @@ def start_background_node():
         try:
             payload = {
                 "node_id": NODE_ID,
-                "ip_address": "103.25.x.x", # लाइव टेस्ट के लिए आईपी
+                "ip_address": "103.25.x.x",
                 "bytes": 2048
             }
             res = requests.post(GATEWAY_URL, json=payload)
